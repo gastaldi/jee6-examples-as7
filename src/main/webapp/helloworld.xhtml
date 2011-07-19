@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="index.xhtml">
+	<ui:define name="pageTitle">Titulo Alterado !</ui:define>
+	<ui:define name="pageHeader">Cabeçalho</ui:define>
+	<ui:define name="body">
+		<h:messages id="messages" />
+		<h:form id="formulario">
+			<h:inputText id="nomeCliente" value="#{cliente.nome}">
+			</h:inputText>
+			<h:commandLink id="cmd" value="Click Me"
+				actionListener="#{helloService.doSomething}">
+				<f:ajax render="label" />
+			</h:commandLink>
+			<ui:remove>
+				<f:ajax event="keyup" render="label" />
+			</ui:remove>
+
+			<h:outputText id="label" value="#{cliente.nome}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
