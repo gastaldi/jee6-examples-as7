@@ -8,13 +8,14 @@
 	<ui:define name="pageTitle">Titulo Alterado !</ui:define>
 	<ui:define name="pageHeader">Cabeçalho</ui:define>
 	<ui:define name="body">
-		<h:messages id="messages" />
 		<h:form id="formulario">
+			<h:messages id="messages" />
 			<h:inputText id="nomeCliente" value="#{cliente.nome}">
+				<f:validateRegex pattern="[0-9]*"/>
 			</h:inputText>
 			<h:commandLink id="cmd" value="Click Me"
 				actionListener="#{helloService.doSomething}">
-				<f:ajax render="label" />
+				<f:ajax render="label messages" execute="@form" />
 			</h:commandLink>
 			<ui:remove>
 				<f:ajax event="keyup" render="label" />
