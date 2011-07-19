@@ -6,6 +6,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.jboss.seam.solder.core.ExtensionManaged;
 
 public class CDIProducer {
 
@@ -13,4 +17,12 @@ public class CDIProducer {
     public Map<String,AtomicInteger> createCustomerDB() {
         return new HashMap<String, AtomicInteger>();
     }
+    
+    
+    
+    @Produces
+    @ExtensionManaged
+    @CustomerDatabase
+    @PersistenceContext(name="exemplo-web")
+    EntityManager customer;
 }
