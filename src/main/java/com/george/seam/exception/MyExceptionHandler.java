@@ -1,5 +1,6 @@
 package com.george.seam.exception;
 
+import javax.ejb.EJBException;
 import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
@@ -14,7 +15,7 @@ public class MyExceptionHandler {
     @Inject
     Messages messages;
 
-    public void handleEJBException(@Handles CaughtException<Throwable> pe, Logger log) {
+    public void handleEJBException(@Handles CaughtException<EJBException> pe, Logger log) {
         log.info("An error has occurred", pe.getException());
         messages.error("A strange error occurred: {0}", pe.getException().getMessage());
         pe.markHandled();
