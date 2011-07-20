@@ -8,8 +8,10 @@ import org.jboss.seam.exception.control.CaughtException;
 import org.jboss.seam.exception.control.Handles;
 import org.jboss.seam.exception.control.HandlesExceptions;
 import org.jboss.seam.international.status.Messages;
+import org.jboss.seam.solder.core.Veto;
 
-@HandlesExceptions
+@Veto
+//@HandlesExceptions
 public class MyExceptionHandler {
 
     @Inject

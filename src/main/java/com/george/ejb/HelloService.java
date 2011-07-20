@@ -10,6 +10,7 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.PersistenceException;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -67,6 +68,7 @@ public class HelloService {
         System.out.println(dao.buscaPorId(1L));
         System.out.println("Context: "+sessionContext);
         System.out.println("Button has been clicked ! "+cliente.getNome());
+        throw new PersistenceException("This is a persistence Exception");
     }
 
 }

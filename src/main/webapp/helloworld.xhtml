@@ -17,10 +17,7 @@
 				actionListener="#{helloService.doSomething}">
 				<f:ajax render="label messages" execute="@form" />
 			</h:commandLink>
-			<ui:remove>
-				<f:ajax event="keyup" render="label" />
-			</ui:remove>
-
+			<br />
 			<h:outputText id="label" value="#{cliente.nome}" />
 		</h:form>
 	</ui:define>
