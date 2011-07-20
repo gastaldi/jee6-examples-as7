@@ -10,7 +10,6 @@ import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,6 +18,7 @@ import javax.ws.rs.QueryParam;
 import com.george.cdi.Cliente;
 import com.george.cdi.CustomerDatabase;
 import com.george.jpa.Customer;
+import com.george.jpa.dao.DAO;
 
 /**
  * Session Bean implementation class HelloService
@@ -36,10 +36,10 @@ public class HelloService {
     private Map<String,AtomicInteger> customerMap;
     
     @Inject
-    private Cliente cliente;
+    private DAO<Customer> dao;
     
-    @Inject @CustomerDatabase
-    private EntityManager manager;
+    @Inject
+    private Cliente cliente;
     
     @PostConstruct
     public void carregar() {
@@ -64,7 +64,7 @@ public class HelloService {
     }
     
     public void doSomething() {
-        System.out.println(manager.getReference(Customer.class, 1L));
+        System.out.println(dao.buscaPorId(1L));
         System.out.println("Context: "+sessionContext);
         System.out.println("Button has been clicked ! "+cliente.getNome());
     }
